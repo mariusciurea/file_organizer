@@ -35,12 +35,24 @@ def list_all_files(path: str) -> list:
     return files
 
 def extract_file_extension(file: str) -> str:
-    indexes = [i for i, ch in enumerate(file) if ch == '.']
-    if indexes:
-        file_extension = file[indexes[-1]::]
-        return file_extension
-    else:
-        return 'no extension'
+    # indexes = [i for i, ch in enumerate(file) if ch == '.']
+    # if indexes:
+    #     file_extension = file[indexes[-1]::]
+    #     return file_extension
+    # else:
+    #     return 'no extension'
+    ###### varianta 2 ##########
+    # index = file.rfind('.')
+    # print(index)
+    # if index != -1:
+    #     return file[index::]
+    # else:
+    #     return 'no extension'
+
+    ###### varianta 3 ##########
+    filename, extension = os.path.splitext(file)
+    return extension
+
 
 def map_extension_to_folder(path: str) -> dict:
     extension_mapping = {path + '\\'+ dir:FILE_EXT_TYPES[i] for i,dir in enumerate(DIR_TYPES)}
